@@ -18,8 +18,10 @@ namespace RandomNumberGenerator.Controllers
             _logger = logger;
         }
 
+        #region 規定のメソッド
         public IActionResult Index()
         {
+
             return View();
         }
 
@@ -27,6 +29,8 @@ namespace RandomNumberGenerator.Controllers
         {
             return View();
         }
+        #endregion
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
