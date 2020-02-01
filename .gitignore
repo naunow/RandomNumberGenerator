@@ -1,3 +1,5 @@
 /.vs
 /RandomNumberGenerator/bin
 /RandomNumberGenerator/obj
+/RandomNumberGeneratorTests/bin
+/RandomNumberGeneratorTests/obj
