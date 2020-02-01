@@ -10,24 +10,18 @@ namespace RandomNumberGenerator.Controllers.Tests
     public class HomeControllerTests
     {
         [TestMethod()]
-        public void TestCreateNumber()
+        public void TestSumNumber()
         {
-            NumberGenerator random = new NumberGenerator();
+            RandomNumber randomNumber = new RandomNumber
+            {
+                Augend = 2,
+                Addend = 3,
+            };
 
-            Assert.IsTrue(random.number is int);
+            Assert.AreEqual(5, randomNumber.Result);
+
         }
 
-        [TestMethod()]
-        public void TestSumRandomNumbers()
-        {
-            RandomNumber augend = NumberGenerator.Augend();
-            RandomNumber addend = NumberGenerator.Addend();
-
-            RandomNumber sum = augend.Plus(addend);
-
-            // フィールドに直接アクセスしているのはちょっといやな匂いがする……
-            Assert.AreEqual(sum.Result, augend.Augend + addend.Addend);
-        }
     }
 }
 

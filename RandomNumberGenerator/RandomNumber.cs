@@ -17,18 +17,19 @@ namespace RandomNumberGenerator
         /// </summary>
         public int Addend { get; set; }
 
+        private int result;
+
         /// <summary>
         /// 計算結果
         /// </summary>
-        public int Result { get; set; }
-
-
-        public RandomNumber Plus(RandomNumber addend)
+        //public int Result { get; set; }
+        //public int Result = 5;
+        public int Result
         {
-            this.Addend = addend.Addend;
-            this.Result = this.Augend + addend.Addend;
+            get { return result + Addend + Augend; }
+            private set { }
 
-            return this;
         }
+
     }
 }
