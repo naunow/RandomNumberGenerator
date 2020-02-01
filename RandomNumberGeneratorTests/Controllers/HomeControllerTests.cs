@@ -22,6 +22,11 @@ namespace RandomNumberGenerator.Controllers.Tests
 
         }
 
+        // TODO
+        // 数字を更新する
+        // 更新した値でResultの結果を返す
+        // ランダムの数字を作成する
+
     }
 }
 
