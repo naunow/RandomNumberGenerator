@@ -19,23 +19,33 @@ namespace RandomNumberGenerator.Controllers
         }
 
         #region 規定のメソッド
-        public IActionResult Index()
-        {
+        //public IActionResult Index()
+        //{
 
-            return View();
-        }
+        //    return View();
+        //}
 
         public IActionResult Privacy()
         {
             return View();
         }
-        #endregion
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        #endregion
+
+        public IActionResult Index(RandomNumber model, string buttonName)
+        {
+            // 初期値を設定
+            model.LeftNumber = 1;
+            model.RightNumber = 2;
+
+            model.Result = 3;
+
+            return View(model);
         }
     }
 }

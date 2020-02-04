@@ -14,8 +14,8 @@ namespace RandomNumberGenerator.Controllers.Tests
         {
             RandomNumber randomNumber = new RandomNumber
             {
-                Augend = 2,
-                Addend = 3,
+                LeftNumber = 2,
+                RightNumber = 3,
             };
 
             Assert.AreEqual(5, randomNumber.Result);

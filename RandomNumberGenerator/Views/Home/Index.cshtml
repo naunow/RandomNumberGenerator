@@ -1,5 +1,4 @@
-﻿
-
+﻿@model RandomNumberGenerator.RandomNumber
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -11,7 +10,19 @@
 
 <form asp-action="Index" method="post">
     <div>
-        <button type="submit" value=""></button>
-        <button type="submit" value="">random2</button>
+        <label>ランダム１</label>
+        <button type="submit" name="buttonName" value="left">@Html.DisplayFor(x => x.LeftNumber)</button>
+
+        <label>ランダム２</label>
+        <button type="submit" name="buttonName" value="right">@Html.DisplayFor(x => x.RightNumber)</button>
+
     </div>
+
+    <div>
+        <label>結果</label>
+        <span>@Html.DisplayFor(x => x.Result)</span>
+    </div>
+    @Html.HiddenFor(x => x.LeftNumber)
+    @Html.HiddenFor(x => x.RightNumber)
+    @Html.HiddenFor(x => x.Result)
 </form>
