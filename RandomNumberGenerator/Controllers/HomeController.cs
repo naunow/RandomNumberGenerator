@@ -39,12 +39,26 @@ namespace RandomNumberGenerator.Controllers
 
         public IActionResult Index(RandomNumber model, string buttonName)
         {
-            // 初期値を設定
-            model.LeftNumber = 1;
-            model.RightNumber = 2;
+            if(buttonName == "left")
+            {
+                model.Result += model.LeftNumber;
+                model.LeftNumber = new Random().Next(0, 10);
+            }
+            else if(buttonName == "right")
+            {
+                model.Result += model.RightNumber;
+                model.RightNumber = new Random().Next(0, 10);
 
-            model.Result = 3;
+            }
+            else
+            {
+                // 初期値を設定
+                //model.LeftNumber = 1;
+                //model.RightNumber = 2;
 
+                //model.Result = 0;
+
+            }
             return View(model);
         }
     }
