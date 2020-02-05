@@ -1,4 +1,5 @@
 ﻿@model RandomNumberGenerator.RandomNumber
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -8,19 +9,23 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-<form asp-action="Index" method="post">
+<form asp-controller="Home" asp-action="Index" method="post">
     <div>
-        <label>ランダム１</label>
-        <button type="submit" name="buttonName" value="left">@Html.DisplayFor(x => x.LeftNumber)</button>
 
-        <label>ランダム２</label>
-        <button type="submit" name="buttonName" value="right">@Html.DisplayFor(x => x.RightNumber)</button>
+        <label>みぎ</label><input asp-for="RightNumber" />
+        <label>ひだり</label><input asp-for="LeftNumber" />
+
+        <label>結果</label><input asp-for="Result" />
+
+        <button type="submit" name="buttonName" value="left">左を足す</button>
+        <button type="submit" name="buttonName" value="right">右を足す</button>
 
     </div>
 
     <div>
-        <label>結果</label>
-        <span>@Html.DisplayFor(x => x.Result)</span>
+        @*<label>結果</label>*@
+        @*<input type="text" name="name" asp-for="Result" />
+        <span>@Html.DisplayFor(x => x.Result)</span>*@
     </div>
 
 </form>

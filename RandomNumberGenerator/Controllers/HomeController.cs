@@ -37,29 +37,37 @@ namespace RandomNumberGenerator.Controllers
         }
         #endregion
 
-        public IActionResult Index(RandomNumber model, string buttonName)
+        public IActionResult Index(RandomNumber model, string buttonName = "left")
         {
-            if(buttonName == "left")
+            if (buttonName == "left")
             {
-                model.Result += model.LeftNumber;
+                model.Result = model.LeftNumber + model.Result;
                 model.LeftNumber = new Random().Next(0, 10);
             }
-            else if(buttonName == "right")
+            else if (buttonName == "right")
             {
-                model.Result += model.RightNumber;
+                model.Result = model.RightNumber + model.Result;
                 model.RightNumber = new Random().Next(0, 10);
 
             }
             else
             {
                 // 初期値を設定
-                //model.LeftNumber = 1;
-                //model.RightNumber = 2;
+                model.LeftNumber = 1;
+                model.RightNumber = 2;
 
-                //model.Result = 0;
+                model.Result = 0;
 
             }
+
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Cal(RandomNumber model)
+        {
+
+            return View("Index", model);
         }
     }
 }
