@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using RandomNumberGenerator.Models;
 
 namespace RandomNumberGenerator.Controllers
@@ -37,37 +38,31 @@ namespace RandomNumberGenerator.Controllers
         }
         #endregion
 
-        public IActionResult Index(RandomNumber model, string buttonName = "left")
+        public IActionResult Index(RandomNumber model)
         {
-            if (buttonName == "left")
-            {
-                model.Result = model.LeftNumber + model.Result;
-                model.LeftNumber = new Random().Next(0, 10);
-            }
-            else if (buttonName == "right")
-            {
-                model.Result = model.RightNumber + model.Result;
-                model.RightNumber = new Random().Next(0, 10);
+            // 初期値を設定
+            model.LeftNumber = new Random().Next(1, 10);
+            model.RightNumber = new Random().Next(1, 10);
 
-            }
-            else
-            {
-                // 初期値を設定
-                model.LeftNumber = 1;
-                model.RightNumber = 2;
-
-                model.Result = 0;
-
-            }
+            model.Result = 0;
 
             return View(model);
         }
 
-        [HttpPost]
-        public IActionResult Cal(RandomNumber model)
+        [HttpGet]
+        public string Cal(int addend, int result)
         {
+            result = addend + result;
 
-            return View("Index", model);
+            var stringResult = new 
+            {
+                Number = new Random().Next(1, 10),
+                Result = result, 
+            };
+
+            var json = JsonConvert.SerializeObject(stringResult);
+
+            return json;
         }
     }
 }

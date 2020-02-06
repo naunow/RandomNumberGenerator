@@ -4,28 +4,72 @@
     ViewData["Title"] = "Home Page";
 }
 
+<link href="~/css/randomNumber.css" rel="stylesheet" />
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(function () {
+
+        $('#leftBtn').click(function () {
+            ajaxCalculate('#LeftNumber');
+        })
+
+        $('#rightBtn').click(function () {
+            ajaxCalculate('#RightNumber');
+        })
+
+        function ajaxCalculate(inputSelector) {
+
+            let number = $(inputSelector).val();
+            let result = $('#Result').val();
+            $.ajax({
+                type: "GET",
+                url: "./Home/Cal",
+                data: { addend: number, result: result },
+                dataType: 'json',
+                contentType: 'application/json'
+            }).done(function (jsonResult) {
+                $(inputSelector).val(jsonResult.Number);
+                $('#Result').val(jsonResult.Result);
+            }).fail(function (data) {
+            })
+        }
+
+    });
+
+</script>
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>Random Number Generator!!</p>
 </div>
 
-<form asp-controller="Home" asp-action="Index" method="post">
-    <div>
-
-        <label>みぎ</label><input asp-for="RightNumber" />
-        <label>ひだり</label><input asp-for="LeftNumber" />
-
-        <label>結果</label><input asp-for="Result" />
-
-        <button type="submit" name="buttonName" value="left">左を足す</button>
-        <button type="submit" name="buttonName" value="right">右を足す</button>
-
+<div style="margin-bottom:10px;">
+    <div class="number-field">
+        <div>
+            <h5>RIGHT</h5>
+            <input asp-for="RightNumber" />
+        </div>
+        <div>
+            <button type="submit" readonly id="rightBtn" class="btn btn-info btn-block">Add right side number</button>
+        </div>
     </div>
 
-    <div>
-        @*<label>結果</label>*@
-        @*<input type="text" name="name" asp-for="Result" />
-        <span>@Html.DisplayFor(x => x.Result)</span>*@
+    <div class="number-field">
+        <div>
+            <h5>LEFT</h5>
+            <input asp-for="LeftNumber" />
+        </div>
+        <div>
+            <button type="submit" readonly id="leftBtn" class="btn btn-info btn-block">Add left side number</button>
+        </div>
     </div>
+</div>
 
-</form>
+<div class="result-field">
+    <h5>RESULT</h5>
+    <input readonly asp-for="Result" />
+</div>
+
+
+
+
