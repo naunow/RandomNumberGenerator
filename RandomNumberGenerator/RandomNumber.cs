@@ -8,14 +8,24 @@ namespace RandomNumberGenerator
     public class RandomNumber
     {
         /// <summary>
-        /// 被加算数
+        /// 左から１番目
         /// </summary>
-        public int LeftNumber { get; set; }
+        public int Number1 { get; set; }
 
         /// <summary>
-        /// 加算数
+        /// 左から２番目
         /// </summary>
-        public int RightNumber { get; set; }
+        public int Number2 { get; set; }
+
+        /// <summary>
+        /// 左から３番目
+        /// </summary>
+        public int Number3 { get; set; }
+
+        /// <summary>
+        /// 左から４番目
+        /// </summary>
+        public int Number4 { get; set; }
 
         /// <summary>
         /// 計算結果
@@ -23,16 +33,9 @@ namespace RandomNumberGenerator
         public int Result { get; set; }
 
         /// <summary>
-        /// 計算結果
+        /// 目標
         /// </summary>
-        //public int Result { get; set; }
-        //public int Result = 5;
-        //public int Result
-        //{
-        //    get { return result + RightNumber + LeftNumber; }
-        //    private set { }
-
-        //}
+        public int Target { get; set; }
 
     }
 }

@@ -1,42 +1,12 @@
 ﻿@model RandomNumberGenerator.RandomNumber
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Random Number Generator";
 }
 
 <link href="~/css/randomNumber.css" rel="stylesheet" />
 <script src="/lib/jquery/dist/jquery.min.js"></script>
-<script>
-    $(function () {
-
-        $('#leftBtn').click(function () {
-            ajaxCalculate('#LeftNumber');
-        })
-
-        $('#rightBtn').click(function () {
-            ajaxCalculate('#RightNumber');
-        })
-
-        function ajaxCalculate(inputSelector) {
-
-            let number = $(inputSelector).val();
-            let result = $('#Result').val();
-            $.ajax({
-                type: "GET",
-                url: "./Home/Cal",
-                data: { addend: number, result: result },
-                dataType: 'json',
-                contentType: 'application/json'
-            }).done(function (jsonResult) {
-                $(inputSelector).val(jsonResult.Number);
-                $('#Result').val(jsonResult.Result);
-            }).fail(function (data) {
-            })
-        }
-
-    });
-
-</script>
+<script src="~/js/randomNumber.js"></script>
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
@@ -46,29 +16,54 @@
 <div style="margin-bottom:10px;">
     <div class="number-field">
         <div>
-            <h5>RIGHT</h5>
-            <input asp-for="RightNumber" />
+            <input asp-for="Number1" />
         </div>
         <div>
-            <button type="submit" readonly id="rightBtn" class="btn btn-info btn-block">Add right side number</button>
+            <button type="submit" readonly id="number1Btn" class="btn btn-info btn-block">Add the number</button>
         </div>
     </div>
 
     <div class="number-field">
         <div>
-            <h5>LEFT</h5>
-            <input asp-for="LeftNumber" />
+            <input asp-for="Number2" />
         </div>
         <div>
-            <button type="submit" readonly id="leftBtn" class="btn btn-info btn-block">Add left side number</button>
+            <button type="submit" readonly id="number2Btn" class="btn btn-info btn-block">Add the number</button>
+        </div>
+    </div>
+    <div class="number-field">
+        <div>
+            <input asp-for="Number3" />
+        </div>
+        <div>
+            <button type="submit" readonly id="number3Btn" class="btn btn-info btn-block">Add the number</button>
+        </div>
+    </div>
+
+    <div class="number-field">
+        <div>
+            <input asp-for="Number4" />
+        </div>
+        <div>
+            <button type="submit" readonly id="number4Btn" class="btn btn-info btn-block">Add the number</button>
         </div>
     </div>
 </div>
 
-<div class="result-field">
-    <h5>RESULT</h5>
-    <input readonly asp-for="Result" />
+
+
+<div>
+    <div class="result-field">
+        <h5>RESULT</h5>
+        <input readonly asp-for="Result" />
+    </div>
+    <div class="result-field">
+        <h5>TARGET</h5>
+        <input readonly asp-for="Target" />
+    </div>
 </div>
+
+
 
 
 

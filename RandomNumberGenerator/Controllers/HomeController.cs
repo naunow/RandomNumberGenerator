@@ -40,9 +40,19 @@ namespace RandomNumberGenerator.Controllers
 
         public IActionResult Index(RandomNumber model)
         {
+            // インスタンスを一度のみ生成
+            var random = new Random();
+
             // 初期値を設定
-            model.LeftNumber = new Random().Next(1, 10);
-            model.RightNumber = new Random().Next(1, 10);
+            //model.Number1 = new Random().Next(1, 10);
+            //model.Number2 = new Random().Next(1, 10);
+            //model.Number3 = new Random().Next(1, 10);
+            //model.Number4 = new Random().Next(1, 10);
+
+            model.Number1 = random.Next(1, 10);
+            model.Number2 = random.Next(1, 10);
+            model.Number3 = random.Next(1, 10);
+            model.Number4 = random.Next(1, 10);
 
             model.Result = 0;
 
