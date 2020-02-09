@@ -44,15 +44,11 @@ namespace RandomNumberGenerator.Controllers
             var random = new Random();
 
             // 初期値を設定
-            //model.Number1 = new Random().Next(1, 10);
-            //model.Number2 = new Random().Next(1, 10);
-            //model.Number3 = new Random().Next(1, 10);
-            //model.Number4 = new Random().Next(1, 10);
-
             model.Number1 = random.Next(1, 10);
             model.Number2 = random.Next(1, 10);
             model.Number3 = random.Next(1, 10);
             model.Number4 = random.Next(1, 10);
+            model.Target  = random.Next(5, 20);
 
             model.Result = 0;
 
