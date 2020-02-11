@@ -18,21 +18,31 @@
 
     $('#resetBtn').click(function () {
         $('#Result').val(0);
+        alertGameClear();
     })
 
+    /**
+     * 結果に応じてResultの文字色を変える
+     */
     function alertGameClear() {
-        if ($('#Result').val() < $('#Target').val()) {
-            $('#Result').css('color', '#3e3e3e');
+        let resultVal = Number($('#Result').val());
+        let targetVal = Number($('#Target').val());
+
+        if (resultVal < targetVal) {
+
+            $('#Result').addClass("black");
+            $('#Result').removeClass("red");
+            $('#Result').removeClass("blue");
         }
-        else if ($('#Result').val() > $('#Target').val()) {
-            //alert('GAME OVER');
-            //$('#Result').val(0);
-            $('#Result').css('color', 'red');
+        else if (resultVal > targetVal) {
+            $('#Result').addClass("red");
+            $('#Result').removeClass("black");
+            $('#Result').removeClass("blue");
         }
-        else if ($('#Result').val() == $('#Target').val()) {
-            //alert('CLEAR');
-            //$('#Result').val(0);
-            $('#Result').css('color', 'blue');
+        else if (resultVal == targetVal) {
+            $('#Result').addClass("blue");
+            $('#Result').removeClass("red");
+            $('#Result').removeClass("black");
 
         }
     }
@@ -56,8 +66,6 @@
             $('#Result').val(jsonResult.Result);
             alertGameClear();
             
-        }).fail(function (data) {
-        }).always(function (data) {
         })
     }
 

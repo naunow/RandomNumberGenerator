@@ -13,56 +13,62 @@
     <p>Random Number Generator!!</p>
 </div>
 
-<div style="margin-bottom:10px;">
-    <div class="number-field">
-        <div>
-            <input readonly asp-for="Number1" />
+<div class="container" style="padding-bottom:10px;">
+    <div class="row">
+        <div class="number-field col-xl-3">
+            <div>
+                <input readonly asp-for="Number1" />
+            </div>
+            <div>
+                <button type="submit" id="number1Btn" class="btn btn-info btn-block">Add the number</button>
+            </div>
         </div>
-        <div>
-            <button type="submit" id="number1Btn" class="btn btn-info btn-block">Add the number</button>
-        </div>
-    </div>
 
-    <div class="number-field">
-        <div>
-            <input readonly asp-for="Number2" />
+        <div class="number-field col-xl-3">
+            <div>
+                <input readonly asp-for="Number2" />
+            </div>
+            <div>
+                <button type="submit" id="number2Btn" class="btn btn-info btn-block">Add the number</button>
+            </div>
         </div>
-        <div>
-            <button type="submit" id="number2Btn" class="btn btn-info btn-block">Add the number</button>
+        <div class="number-field col-xl-3">
+            <div>
+                <input readonly asp-for="Number3" />
+            </div>
+            <div>
+                <button type="submit" id="number3Btn" class="btn btn-info btn-block">Add the number</button>
+            </div>
         </div>
-    </div>
-    <div class="number-field">
-        <div>
-            <input readonly asp-for="Number3" />
-        </div>
-        <div>
-            <button type="submit" id="number3Btn" class="btn btn-info btn-block">Add the number</button>
-        </div>
-    </div>
 
-    <div class="number-field">
-        <div>
-            <input readonly asp-for="Number4" />
-        </div>
-        <div>
-            <button type="submit" id="number4Btn" class="btn btn-info btn-block">Add the number</button>
+        <div class="number-field col-xl-3">
+            <div>
+                <input readonly asp-for="Number4" />
+            </div>
+            <div>
+                <button type="submit" id="number4Btn" class="btn btn-info btn-block">Add the number</button>
+            </div>
         </div>
     </div>
 </div>
 
 
-
-<div>
-    <div class="result-field">
-        <h5>RESULT</h5>
-        <input readonly asp-for="Result" />
-    </div>
-    <div class="result-field">
-        <h5>TARGET</h5>
-        <input readonly asp-for="Target" />
+<div class="container">
+    <div class="row">
+        <div class="col-xl-6">
+            <h5>RESULT</h5>
+            <input readonly asp-for="Result" />
+        </div>
+        <div class="col-xl-6">
+            <h5>TARGET</h5>
+            <input readonly asp-for="Target" />
+        </div>
+        <div class="col-xl-12">
+            <button type="submit" readonly id="resetBtn" class="btn btn-secondary btn-block">Reset result</button>
+        </div>
     </div>
 </div>
-<button type="submit" readonly id="resetBtn" class="btn btn-secondary btn-block">Reset result</button>
+
 
 
 

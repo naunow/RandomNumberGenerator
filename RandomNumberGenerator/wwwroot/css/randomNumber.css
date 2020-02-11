@@ -1,19 +1,18 @@
-﻿.number-field {
-    display:inline-block;
-    width: 24%;
-    padding:10px
-}
-
-input {
-    margin-bottom: 10px;
+﻿input {
+    margin-bottom: 30px;
     border: none;
     font-size: 4rem;
-    max-width: 250px;
     color: #3e3e3e;
 }
 
-.result-field {
-    display: inline-block;
-    width: 49%;
-    padding: 10px
+.red{
+    color: red;
+}
+
+.blue{
+    color:blue;
+}
+
+.black{
+    color: #3e3e3e;
 }
