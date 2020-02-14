@@ -18,7 +18,21 @@
 
     $('#resetBtn').click(function () {
         $('#Result').val(0);
-        alertGameClear();
+
+        $.ajax({
+            type: "GET",
+            url: "./Home/Reset",
+            dataType: 'json'
+        }).done(function (random) {
+            $('#Number1').val(random.Number1);
+            $('#Number2').val(random.Number2);
+            $('#Number3').val(random.Number3);
+            $('#Number4').val(random.Number4);
+            $('#Target').val(random.Target);
+
+        }).always(function (data) {
+            alertGameClear();
+        })
     })
 
     /**

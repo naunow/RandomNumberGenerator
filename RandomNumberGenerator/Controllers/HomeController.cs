@@ -70,5 +70,20 @@ namespace RandomNumberGenerator.Controllers
 
             return json;
         }
+
+        public string Reset()
+        {
+            var random = new Random();
+            var model = new RandomNumber
+            {
+                Number1 = random.Next(1, 10),
+                Number2 = random.Next(1, 10),
+                Number3 = random.Next(1, 10),
+                Number4 = random.Next(1, 10),
+                Target  = random.Next(10, 50),
+            };
+
+            return JsonConvert.SerializeObject(model);
+        }
     }
 }
