@@ -17,7 +17,6 @@
     })
 
     $('#resetBtn').click(function () {
-        $('#Result').val(0);
 
         $.ajax({
             type: "GET",
@@ -29,6 +28,7 @@
             $('#Number3').val(random.Number3);
             $('#Number4').val(random.Number4);
             $('#Target').val(random.Target);
+            $('#Result').val(random.Result);
 
         }).always(function (data) {
             alertGameClear();
@@ -48,12 +48,12 @@
             $('#Result').removeClass("red");
             $('#Result').removeClass("blue");
         }
-        else if (resultVal > targetVal) {
+        if (resultVal > targetVal) {
             $('#Result').addClass("red");
             $('#Result').removeClass("black");
             $('#Result').removeClass("blue");
         }
-        else if (resultVal == targetVal) {
+        if (resultVal == targetVal) {
             $('#Result').addClass("blue");
             $('#Result').removeClass("red");
             $('#Result').removeClass("black");

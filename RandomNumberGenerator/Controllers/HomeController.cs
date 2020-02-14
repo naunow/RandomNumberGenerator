@@ -40,21 +40,17 @@ namespace RandomNumberGenerator.Controllers
 
         public IActionResult Index(RandomNumber model)
         {
-            // インスタンスを一度のみ生成
-            var random = new Random();
+            var initialModel = InitializeRandomNumber();
 
-            // 初期値を設定
-            model.Number1 = random.Next(1, 10);
-            model.Number2 = random.Next(1, 10);
-            model.Number3 = random.Next(1, 10);
-            model.Number4 = random.Next(1, 10);
-            model.Target  = random.Next(5, 20);
-
-            model.Result = 0;
-
-            return View(model);
+            return View(initialModel);
         }
 
+        /// <summary>
+        /// Addボタン押下時
+        /// </summary>
+        /// <param name="addend"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
         [HttpGet]
         public string Cal(int addend, int result)
         {
@@ -71,19 +67,35 @@ namespace RandomNumberGenerator.Controllers
             return json;
         }
 
+        /// <summary>
+        /// NEW ROUNDボタン押下時
+        /// </summary>
+        /// <returns></returns>
         public string Reset()
         {
+            var initialModel = InitializeRandomNumber();
+
+            return JsonConvert.SerializeObject(initialModel);
+        }
+
+        /// <summary>
+        /// ランダムナンバーの初期化
+        /// </summary>
+        /// <returns></returns>
+        private RandomNumber InitializeRandomNumber()
+        {
             var random = new Random();
-            var model = new RandomNumber
+            var initialModel = new RandomNumber
             {
                 Number1 = random.Next(1, 10),
                 Number2 = random.Next(1, 10),
                 Number3 = random.Next(1, 10),
                 Number4 = random.Next(1, 10),
                 Target  = random.Next(10, 50),
+                Result = 0,
             };
 
-            return JsonConvert.SerializeObject(model);
+            return initialModel;
         }
     }
 }
