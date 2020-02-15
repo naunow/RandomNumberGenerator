@@ -32,6 +32,9 @@
 
         }).always(function (data) {
             alertGameClear();
+            // 数字ボタンを活性にする
+            $('.addBtn').prop('disabled', '');
+
         })
     })
 
@@ -43,20 +46,37 @@
         let targetVal = Number($('#Target').val());
 
         if (resultVal < targetVal) {
-
+            // 文字色を黒にする
             $('#Result').addClass("black");
             $('#Result').removeClass("red");
             $('#Result').removeClass("blue");
         }
         if (resultVal > targetVal) {
+            // 文字色を赤にする
             $('#Result').addClass("red");
             $('#Result').removeClass("black");
             $('#Result').removeClass("blue");
+
+            // 数字ボタンを非活性にする
+            $('.addBtn').prop('disabled', 'disabled');
+
+            // 失敗した回数をカウント
+            let fail = Number($('#fail').text());
+            $('#fail').text(fail + 1);
+
         }
         if (resultVal == targetVal) {
+            // 文字色を青にする
             $('#Result').addClass("blue");
             $('#Result').removeClass("red");
             $('#Result').removeClass("black");
+
+            // 数字ボタンを非活性にする
+            $('.addBtn').prop('disabled', 'disabled');
+
+            // 成功した回数をカウント
+            let success = Number($('#success').text());
+            $('#success').text(success + 1);
 
         }
     }
