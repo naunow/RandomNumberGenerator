@@ -1,4 +1,5 @@
 ﻿$(function () {
+    var url = location.href;
 
     $('#number1Btn').click(function () {
         ajaxCalculate('#Number1');
@@ -17,10 +18,9 @@
     })
 
     $('#resetBtn').click(function () {
-
         $.ajax({
             type: "GET",
-            url: "./Home/Reset",
+            url: `${url}/Home/Reset`,
             dataType: 'json'
         }).done(function (random) {
             $('#Number1').val(random.Number1);
@@ -91,7 +91,7 @@
         let result = $('#Result').val();
         $.ajax({
             type: "GET",
-            url: "./Home/Cal",
+            url: `${url}/Home/Cal`,
             data: { addend: number, result: result },
             dataType: 'json',
             contentType: 'application/json'
